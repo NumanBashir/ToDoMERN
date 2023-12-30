@@ -32,6 +32,34 @@ app.post("/todos", async (request, response) => {
   }
 });
 
+// Route for get all ToDos from database (read all todos)
+app.get("/todos", async (request, response) => {
+  try {
+    const todos = await ToDo.find({});
+
+    return response.status(200).json({
+      count: todos.length,
+      data: todos,
+    });
+  } catch (error) {
+    console.log(error.message);
+    response.status(500).send({ message: error.message });
+  }
+});
+
+// Route for get Todo from database by id (get todo by ID)
+app.get("/todos/:id", async (request, response) => {
+  try {
+    const { id } = request.params;
+    const todo = await ToDo.findById(id);
+
+    return response.status(200).json(todo);
+  } catch (error) {
+    console.log(error.message);
+    response.status(500).send({ message: error.message });
+  }
+});
+
 mongoose
   .connect(mongoDBURL)
   .then(() => {
