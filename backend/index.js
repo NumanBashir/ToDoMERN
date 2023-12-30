@@ -82,6 +82,24 @@ app.put("/todos/:id", async (request, response) => {
   }
 });
 
+// Route for delete a todo
+app.delete("/todos/:id", async (request, response) => {
+  try {
+    const { id } = request.params;
+
+    const result = await ToDo.findByIdAndDelete(id);
+
+    if (!result) {
+      return response.status(404).json({ message: "Todo not found" });
+    }
+
+    return response.status(200).send({ message: "Todo deleted successfully" });
+  } catch (error) {
+    console.log(error.message);
+    response.status(500).send({ message: error.message });
+  }
+});
+
 mongoose
   .connect(mongoDBURL)
   .then(() => {
