@@ -1,5 +1,5 @@
 import React from "react";
-import { Routes, Routes } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import CreateToDo from "./pages/CreateToDo";
 import ShowToDo from "./pages/ShowToDo";
