@@ -24,7 +24,7 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="container mx-auto p-8 bg-white rounded-lg shadow">
+    <div className="container mt-4 mx-auto p-8 bg-white rounded-lg shadow-xl">
       <div className="flex justify-between items-center">
         <h1 className="text-xl font-semibold text-gray-700">Todos List</h1>
         <Link to="/todos/create" className="text-sky-800">
