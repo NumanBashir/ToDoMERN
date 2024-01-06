@@ -24,26 +24,32 @@ const ShowToDo = () => {
   }, []);
 
   return (
-    <div className="p-6 bg-white shadow-md rounded-lg">
+    <div className="p-4">
       <BackButton />
-      <h1 className="text-4xl font-semibold my-6 text-gray-700">Show ToDo</h1>
+      <h1 className="text-3xl my-4">Show book</h1>
       {loading ? (
         <Spinner />
       ) : (
-        <div>
-          <div className="space-y-4 border-2 border-gray-200 rounded-xl p-6 max-w-md mx-auto">
-            <div className="flex items-center space-x-4">
-              <span className="text-lg text-gray-600">Title:</span>
-              <span className="font-medium">{todo.title}</span>
-            </div>
-            <div className="flex items-center space-x-4">
-              <span className="text-lg text-gray-600">Date:</span>
-              <span className="font-medium">
-                {`${new Date(todo.date).toISOString().split("T")[0]} ${
-                  new Date(todo.date).toTimeString().split(" ")[0]
-                }`}
-              </span>
-            </div>
+        <div className="flex flex-col border-2 border-sky-400 rounded-xl w-fit p-4">
+          <div className="my-4">
+            <span className="text-xl mr-4 text-gray-500">Id</span>
+            <span>{todo._id}</span>
+          </div>
+          <div className="my-4">
+            <span className="text-xl mr-4 text-gray-500">Title</span>
+            <span>{todo.title}</span>
+          </div>
+          <div className="my-4">
+            <span className="text-xl mr-4 text-gray-500">Date</span>
+            <span>{todo.date}</span>
+          </div>
+          <div className="my-4">
+            <span className="text-xl mr-4 text-gray-500">Create Time</span>
+            <span>{new Date(todo.createdAt).toString()}</span>
+          </div>
+          <div className="my-4">
+            <span className="text-xl mr-4 text-gray-500">Last Update Time</span>
+            <span>{new Date(todo.updatedAt).toString()}</span>
           </div>
         </div>
       )}
